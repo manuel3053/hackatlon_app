@@ -3,6 +3,8 @@ import 'package:hackatlon_app/Screens/home.dart';
 import 'package:hackatlon_app/Screens/missions.dart';
 import 'package:hackatlon_app/Screens/leaderbord.dart';
 
+import 'Screens/login.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -42,11 +44,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
-        title: Center(
-            child: Text(
-          'Ciao (nomeutente)! (posizione°)',
-          style: TextStyle(color: Colors.black),
-        )),
+        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text(
+            'Ciao piera! (69°)',
+            style: TextStyle(color: Colors.black),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()));
+            },
+            icon: Icon(Icons.supervised_user_circle_outlined),
+            color: Colors.black,
+          )
+        ]),
         backgroundColor: Colors.greenAccent,
       ),
       body: Container(
