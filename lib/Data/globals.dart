@@ -1,2 +1,2 @@
-int punteggio = 0;
+//int punteggio = 0;
 bool updateCard = false;
