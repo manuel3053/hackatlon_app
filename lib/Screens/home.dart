@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../Widgets/streak.dart';
+
 class Home extends StatefulWidget {
   const Home({
     super.key,
@@ -21,7 +23,6 @@ class _HomeState extends State<Home> {
       animation: true,
       animationDuration: 1500,
       center: Text('00%'),
-
     ),
     CircularPercentIndicator(
       radius: 60,
@@ -40,7 +41,6 @@ class _HomeState extends State<Home> {
       animation: true,
       animationDuration: 1500,
       center: Text('00%'),
-
     ),
     SizedBox(
       height: 100,
@@ -48,6 +48,22 @@ class _HomeState extends State<Home> {
       child: ElevatedButton(
         onPressed: () {},
         child: Text('Wiki'),
+      ),
+    ),
+    Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: CustomPaint(
+        painter: Streak(),
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(''),
+              Text('Streak'),
+              Text('n'),
+            ],
+          ),
+        ),
       ),
     ),
     SizedBox(
@@ -64,12 +80,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Container(
       child: GridView.count(
-        padding: EdgeInsets.all(8),
-        crossAxisCount: 3,
-        crossAxisSpacing: 1.0,
-        mainAxisSpacing: 1.0,
-        children: gridItems
-      ),
+          padding: EdgeInsets.all(8),
+          crossAxisCount: 3,
+          crossAxisSpacing: 1.0,
+          mainAxisSpacing: 50.0,
+          children: gridItems),
     );
   }
 }

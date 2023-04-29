@@ -41,8 +41,9 @@ class _MyHomePageState extends State<MyHomePage> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20))),
-        title: Text('Ciao (nomeutente)! (posizione°)'),
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
+        title: Center(child: Text('Ciao (nomeutente)! (posizione°)')),
+        backgroundColor: Colors.greenAccent,
       ),
       body: Container(
           decoration: const BoxDecoration(
