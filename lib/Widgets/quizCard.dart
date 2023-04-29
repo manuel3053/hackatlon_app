@@ -15,6 +15,14 @@ class quizCard extends StatefulWidget {
 
 class _quizCardState extends State<quizCard> {
   int punteggio = 0;
+  List<bool> wrong = [false, false, false];
+
+  void isWrong(int i) {
+    setState(() {
+      wrong[i] = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     var quiz = widget.quiz;
@@ -62,12 +70,19 @@ class _quizCardState extends State<quizCard> {
                             return GestureDetector(
                               onTap: () {
                                 if (index == quiz.solution) {
-                                  print("Fatto");
-
-                                  punteggio++;
-                                  print(punteggio);
-
+                                  bool inPointGived = true;
+                                  for (int i = 0;
+                                      i < quiz.answers.length;
+                                      i++) {
+                                    if (wrong[i] == true) inPointGived = false;
+                                  }
+                                  if (inPointGived) {
+                                    punteggio++;
+                                  }
                                   widget.onCorrectAnswer(punteggio);
+                                  wrong = [false, false, false];
+                                } else {
+                                  isWrong(index);
                                 }
                               },
                               child: Padding(
@@ -80,7 +95,9 @@ class _quizCardState extends State<quizCard> {
                                       left: kDefaultPadding,
                                     ),
                                     decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 0, 255, 119),
+                                      color: wrong[index]
+                                          ? Color.fromARGB(255, 208, 69, 69)
+                                          : Color.fromARGB(255, 0, 255, 119),
                                       borderRadius: BorderRadius.circular(16),
                                     ),
                                     child: Center(
