@@ -121,7 +121,7 @@ class linearProgressor extends StatelessWidget {
         percent: x / y,
         linearStrokeCap: LinearStrokeCap.roundAll,
         progressColor: barColour,
-        backgroundColor: Colors.red.shade300,
+        backgroundColor: const Color.fromARGB(85, 0, 0, 0),
       ),
     );
   }
