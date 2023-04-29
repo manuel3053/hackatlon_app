@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackatlon_app/Screens/addEditArticle.dart';
 import 'package:hackatlon_app/Widgets/userbar.dart';
 
 import '../Widgets/info.dart';
@@ -21,16 +22,23 @@ class _WikiState extends State<Wiki> {
         child: ListView.separated(
           itemCount: 30,
           itemBuilder: (BuildContext context, int i) {
-            return i!=0 ? Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Info(),
-            ) : Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: IconButton(
-                icon: Icon(Icons.add),
-                onPressed: (){},
-              ),
-            );
+            return i != 0
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: Info(),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: IconButton(
+                      icon: Icon(Icons.add),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => addEditArticle()));
+                      },
+                    ),
+                  );
           },
           separatorBuilder: (BuildContext context, int index) {
             return Container(

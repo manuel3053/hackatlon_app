@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_declarations
+
 import 'package:hackatlon_app/db/wikiData.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -33,7 +35,7 @@ class ArticlesDatabase {
 CREATE TABLE $tableWiki ( 
   ${ArticlesFields.id} $idType, 
   ${ArticlesFields.title} $textType,
-  ${ArticlesFields.body} $textType,
+  ${ArticlesFields.body} $textType
   )
 ''');
   }
