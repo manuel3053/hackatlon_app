@@ -7,8 +7,8 @@ import 'package:hackatlon_app/Functions/domande.dart';
 
 class quizCard extends StatefulWidget {
   final Quiz quiz;
-  final update;
-  const quizCard({Key? key, required this.quiz, required this.update})
+  final Function onCorrectAnswer;
+  const quizCard({Key? key, required this.quiz, required this.onCorrectAnswer})
       : super(key: key);
 
   @override
@@ -16,6 +16,7 @@ class quizCard extends StatefulWidget {
 }
 
 class _quizCardState extends State<quizCard> {
+  int punteggio=0;
   @override
   Widget build(BuildContext context) {
     var quiz = widget.quiz;
@@ -68,7 +69,7 @@ class _quizCardState extends State<quizCard> {
                                   punteggio++;
                                   print(punteggio);
 
-                                  widget.update;
+                                  widget.onCorrectAnswer(punteggio).value;
                                 }
                               },
                               child: Padding(
