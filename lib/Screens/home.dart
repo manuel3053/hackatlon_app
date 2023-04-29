@@ -5,6 +5,7 @@ import 'package:hackatlon_app/Data/constants.dart';
 import 'package:hackatlon_app/Data/globals.dart';
 import 'package:hackatlon_app/Functions/triviaLogic.dart';
 import 'package:hackatlon_app/Screens/quizpage.dart';
+import 'package:hackatlon_app/Screens/wiki.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../Functions/domande.dart';
@@ -71,7 +72,8 @@ class _HomeState extends State<Home> {
             Padding(
               padding: EdgeInsets.all(20),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Wiki()));},
                 style: ElevatedButton.styleFrom(
                     minimumSize: Size(100, 100),
                     shape: RoundedRectangleBorder(
