@@ -33,7 +33,7 @@ class ArticlesDatabase {
 CREATE TABLE $tableWiki ( 
   ${ArticlesFields.id} $idType, 
   ${ArticlesFields.title} $textType,
-  ${ArticlesFields.body} $textType,
+  ${ArticlesFields.body} $textType
   )
 ''');
   }
