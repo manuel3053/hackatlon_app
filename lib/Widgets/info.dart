@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hackatlon_app/Data/globals.dart';
 
 class Info extends StatelessWidget {
-  final String title;
-  const Info({super.key, required this.title});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -21,7 +19,7 @@ class Info extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Image(image: AssetImage('images/bg.png')),
-            Text(title),
+            Text('Notizia bombastica'),
           ],
         ),
       ),

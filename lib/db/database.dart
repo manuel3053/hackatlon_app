@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_declarations
+
 import 'package:hackatlon_app/db/wikiData.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
