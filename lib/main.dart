@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hackatlon_app/Screens/home.dart';
+import 'package:hackatlon_app/Screens/missions.dart';
+import 'package:hackatlon_app/Screens/leaderbord.dart';
+
+import 'Screens/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -30,46 +35,77 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-
-      _counter++;
-    });
-  }
-
+  int currentIndex = 1;
+  final PageController pageController = PageController(initialPage: 1);
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
+        title: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text(
+            'Ciao piera! (69°)',
+            style: TextStyle(color: Colors.black),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()));
+            },
+            icon: Icon(Icons.supervised_user_circle_outlined),
+            color: Colors.black,
+          )
+        ]),
+        backgroundColor: Colors.greenAccent,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/bg.png'), fit: BoxFit.cover)),
+        child: PageView(
+          onPageChanged: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          controller: pageController,
+          children: [
+            Leaderboard(),
+            Home(),
+            Missions(),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.greenAccent,
+        currentIndex: currentIndex,
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+          });
+          if (pageController.hasClients) {
+            pageController.animateToPage(index,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.easeInOut);
+          }
+        },
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.leaderboard),
+            label: 'Leaderboard',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_filled),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.task_alt),
+            label: 'Missions',
+          ),
+        ],
+      ),
     );
   }
 }
