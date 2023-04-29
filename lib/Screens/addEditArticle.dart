@@ -35,7 +35,7 @@ class _addEditArticleState extends State<addEditArticle> {
   Widget build(BuildContext context) => Scaffold(
         backgroundColor: Color.fromARGB(255, 172, 220, 140),
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: const Color.fromARGB(0, 33, 149, 243),
           elevation: 0,
           title: Padding(
             padding:
