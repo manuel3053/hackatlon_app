@@ -10,21 +10,24 @@ class Leaderboard extends StatefulWidget {
   State<Leaderboard> createState() => _LeaderboardState();
 }
 
-class _LeaderboardState extends State<Leaderboard>{
-
+class _LeaderboardState extends State<Leaderboard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: ListView.builder(
-        itemCount: 1,
-          itemBuilder: (BuildContext context, int i){
-              return Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
-                child: UserBar(),
-              );
-          }
-      )
-      //child: Text('>Leaderboard'),
-    );
+      padding: EdgeInsets.only(top: 10),
+        child: ListView.separated(
+      itemCount: 30,
+      itemBuilder: (BuildContext context, int i) {
+        return Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: UserBar(),
+        );
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return Container(height: 2,);
+      },
+    )
+        //child: Text('>Leaderboard'),
+        );
   }
 }

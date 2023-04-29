@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:hackatlon_app/Functions/triviaLogic.dart';
+import 'package:hackatlon_app/Widgets/quizCard.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+import '../Functions/domande.dart';
 import '../Widgets/streak.dart';
 
 class Home extends StatefulWidget {
@@ -14,6 +17,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int level=0;
+  List<Quiz> game = generateTrivia(4);
+
   List<Widget> gridItems = [
     CircularPercentIndicator(
       radius: 60,
@@ -42,11 +48,13 @@ class _HomeState extends State<Home> {
       animationDuration: 1500,
       center: Text('00%'),
     ),
-    SizedBox(
-      height: 100,
-      width: 100,
+    Padding(
+      padding: EdgeInsets.all(20),
       child: ElevatedButton(
         onPressed: () {},
+        style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40))),
         child: Text('Wiki'),
       ),
     ),
@@ -66,11 +74,18 @@ class _HomeState extends State<Home> {
         ),
       ),
     ),
-    SizedBox(
-      height: 100,
-      width: 100,
+    Padding(
+      padding: EdgeInsets.all(20),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const quizCard(quiz: game[level], update: (){})));
+          },
+        style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40))),
         child: Text('Trivia'),
       ),
     )
@@ -78,7 +93,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.only(top: 150),
       child: GridView.count(
           padding: EdgeInsets.all(8),
           crossAxisCount: 3,

@@ -52,21 +52,18 @@ class _MyHomePageState extends State<MyHomePage> {
                   fit: BoxFit.cover
               )
           ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 140),
-          child: PageView(
-            onPageChanged: (index) {
-              setState(() {
-                currentIndex = index;
-              });
-            },
-            controller: pageController,
-            children: [
-              Leaderboard(),
-              Home(),
-              Missions(),
-            ],
-          ),
+        child: PageView(
+          onPageChanged: (index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          controller: pageController,
+          children: [
+            Leaderboard(),
+            Home(),
+            Missions(),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
