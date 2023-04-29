@@ -16,7 +16,7 @@ class quizCard extends StatefulWidget {
 }
 
 class _quizCardState extends State<quizCard> {
-  int punteggio=0;
+  int punteggio = 0;
   @override
   Widget build(BuildContext context) {
     var quiz = widget.quiz;
@@ -69,7 +69,7 @@ class _quizCardState extends State<quizCard> {
                                   punteggio++;
                                   print(punteggio);
 
-                                  widget.onCorrectAnswer(punteggio).value;
+                                  widget.onCorrectAnswer(punteggio);
                                 }
                               },
                               child: Padding(

@@ -100,7 +100,10 @@ class _HomeState extends State<Home> {
             Padding(
               padding: EdgeInsets.all(20),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => QuizPage()));
+                },
                 style: ElevatedButton.styleFrom(
                     minimumSize: Size(100, 100),
                     shape: RoundedRectangleBorder(

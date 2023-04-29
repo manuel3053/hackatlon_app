@@ -19,7 +19,7 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   int level = 0;
-  int score=0;
+  int score = 0;
   List<Quiz> game = generateTrivia(4);
 
   @override
@@ -29,14 +29,17 @@ class _QuizPageState extends State<QuizPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Center(child: Text('Punteggio: $score')),
-          quizCard(quiz: game[level], onCorrectAnswer: (value){
-            setState(() {
-              if(level<3){
-                level++;
-              }
-              score=value;
-            });
-          },),
+          quizCard(
+            quiz: game[level],
+            onCorrectAnswer: (value) {
+              setState(() {
+                if (level < 3) {
+                  level++;
+                }
+                score = value;
+              });
+            },
+          ),
         ],
       ),
     );
