@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:hackatlon_app/Data/constants.dart';
+import 'package:hackatlon_app/Data/globals.dart';
 import 'package:hackatlon_app/Functions/triviaLogic.dart';
 import 'package:hackatlon_app/Screens/quizpage.dart';
-import 'package:hackatlon_app/Widgets/quizCard.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 import '../Functions/domande.dart';
@@ -29,37 +29,41 @@ class _HomeState extends State<Home> {
       padding: const EdgeInsets.only(top: 150),
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            CircularPercentIndicator(
-              radius: 60,
-              lineWidth: 15,
-              percent: 60 / 100,
-              progressColor: Colors.red,
-              animation: true,
-              animationDuration: 1500,
-              center: Text('00%'),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: barBackColour,
+              borderRadius: BorderRadius.circular(16),
             ),
-            CircularPercentIndicator(
-              radius: 60,
-              lineWidth: 15,
-              percent: 60 / 100,
-              progressColor: Colors.red,
-              animation: true,
-              animationDuration: 1500,
-              center: Text('00% '),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    circularBar(
+                        x: 4,
+                        y: 5,
+                        middleText: "4/5",
+                        underText: "Lessons",
+                        colour: barColour),
+                    circularBar(
+                        x: 9,
+                        y: 10,
+                        middleText: "9km",
+                        underText: "Walks",
+                        colour: barColour),
+                    circularBar(
+                        x: 7,
+                        y: 10,
+                        middleText: "7/10",
+                        underText: "Trivia",
+                        colour: barColour),
+                  ],
+                ),
+              ],
             ),
-            CircularPercentIndicator(
-              radius: 60,
-              lineWidth: 15,
-              percent: 60 / 100,
-              progressColor: Colors.red,
-              animation: true,
-              animationDuration: 1500,
-              center: Text('00%'),
-            ),
-          ],
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -119,7 +123,86 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Column(
+            children: [
+              settingCard(text: "Reward", onTap: () {}),
+              settingCard(text: "Badge", onTap: () {}),
+              settingCard(text: "Community", onTap: () {}),
+            ],
+          )
+        ]),
+        SizedBox(
+          height: 15,
+        )
       ]),
+    );
+  }
+}
+
+class settingCard extends StatelessWidget {
+  final String text;
+  final Function() onTap;
+  const settingCard({super.key, required this.text, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 2.0),
+        child: Container(
+          width: getWidth(context) / 1.2,
+          height: getHeight(context) / 15,
+          decoration: BoxDecoration(
+            color: barBackColour,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Center(
+              child: Text(
+            text,
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 20, color: Colors.black),
+          )),
+        ),
+      ),
+    );
+  }
+}
+
+class circularBar extends StatelessWidget {
+  final int x, y;
+  final String middleText, underText;
+  final Color colour;
+  const circularBar(
+      {super.key,
+      required this.x,
+      required this.y,
+      required this.middleText,
+      required this.underText,
+      required this.colour});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      child: Column(
+        children: [
+          CircularPercentIndicator(
+            radius: 40,
+            lineWidth: 15,
+            percent: x / y,
+            progressColor: colour,
+            animation: true,
+            animationDuration: 1500,
+            center: Text(middleText),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Text(underText),
+          )
+        ],
+      ),
     );
   }
 }

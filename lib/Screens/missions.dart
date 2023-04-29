@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
 import 'package:hackatlon_app/Data/constants.dart';
+import 'package:hackatlon_app/Data/globals.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class Missions extends StatefulWidget {
@@ -16,7 +17,6 @@ class Missions extends StatefulWidget {
 class _MissionsState extends State<Missions> {
   @override
   Widget build(BuildContext context) {
-    final double progress = 0.5;
     return Container(
       height: 10,
       child: Column(
@@ -29,7 +29,7 @@ class _MissionsState extends State<Missions> {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             child: Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(189, 16, 140, 132),
+                color: Color.fromARGB(187, 255, 255, 255),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(children: [
@@ -40,59 +40,20 @@ class _MissionsState extends State<Missions> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,
-                        color: Colors.white),
+                        color: Colors.black),
                   ),
                 ),
+                linearProgressor(x: 9, y: 10, text: "Passa Fisica"),
+                linearProgressor(x: 9, y: 10, text: "Passa Fisica"),
                 Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: LinearPercentIndicator(
-                    width: getWidth(context) / 1.6,
-                    animation: true,
-                    lineHeight: 20.0,
-                    animationDuration: 2000,
-                    leading: Text(
-                      "Passa Fisica",
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    child: Text(
+                      "Altro",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
-                          color: Colors.white),
-                    ),
-                    percent: 0.9,
-                    center: Text("90.0%"),
-                    linearStrokeCap: LinearStrokeCap.roundAll,
-                    progressColor: Colors.greenAccent,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(15.0),
-                  child: LinearPercentIndicator(
-                    width: getWidth(context) / 1.6,
-                    animation: true,
-                    lineHeight: 20.0,
-                    animationDuration: 2000,
-                    leading: Text(
-                      "Passa Fisica",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                          color: Colors.white),
-                    ),
-                    percent: 0.9,
-                    center: Text("90.0%"),
-                    linearStrokeCap: LinearStrokeCap.roundAll,
-                    progressColor: Colors.greenAccent,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Text(
-                    "Altro",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.white),
-                  ),
-                ),
+                          color: Colors.black),
+                    )),
               ]),
             ),
           ),
@@ -100,7 +61,7 @@ class _MissionsState extends State<Missions> {
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             child: Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(189, 16, 140, 132),
+                color: Color.fromARGB(187, 255, 255, 255),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Column(
@@ -112,49 +73,11 @@ class _MissionsState extends State<Missions> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
-                          color: Colors.white),
+                          color: Colors.black),
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: LinearPercentIndicator(
-                      width: getWidth(context) / 1.6,
-                      animation: true,
-                      lineHeight: 20.0,
-                      animationDuration: 2000,
-                      leading: Text(
-                        "Passa Fisica",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            color: Colors.white),
-                      ),
-                      percent: 0.9,
-                      center: Text("90.0%"),
-                      linearStrokeCap: LinearStrokeCap.roundAll,
-                      progressColor: Colors.greenAccent,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: LinearPercentIndicator(
-                      width: getWidth(context) / 1.6,
-                      animation: true,
-                      lineHeight: 20.0,
-                      animationDuration: 2000,
-                      leading: Text(
-                        "Passa Fisica",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15,
-                            color: Colors.white),
-                      ),
-                      percent: 0.9,
-                      center: Text("90.0%"),
-                      linearStrokeCap: LinearStrokeCap.roundAll,
-                      progressColor: Colors.greenAccent,
-                    ),
-                  ),
+                  linearProgressor(x: 9, y: 10, text: "Passa Fisica"),
+                  linearProgressor(x: 9, y: 10, text: "Passa Fisica"),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Text(
@@ -162,7 +85,7 @@ class _MissionsState extends State<Missions> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
-                          color: Colors.white),
+                          color: Colors.black),
                     ),
                   ),
                 ],
@@ -170,6 +93,35 @@ class _MissionsState extends State<Missions> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class linearProgressor extends StatelessWidget {
+  final int x, y;
+  final String text;
+  const linearProgressor(
+      {super.key, required this.x, required this.y, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.all(15.0),
+      child: LinearPercentIndicator(
+        width: getWidth(context) / 1.6,
+        animation: true,
+        lineHeight: 20.0,
+        animationDuration: 2000,
+        leading: Text(
+          text,
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 15, color: Colors.black),
+        ),
+        percent: x / y,
+        linearStrokeCap: LinearStrokeCap.roundAll,
+        progressColor: barColour,
+        backgroundColor: Colors.red.shade300,
       ),
     );
   }

@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:hackatlon_app/Data/constants.dart';
 import 'package:hackatlon_app/Functions/triviaLogic.dart';
 import 'package:hackatlon_app/Widgets/quizCard.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
-
 import '../Functions/domande.dart';
-import '../Widgets/streak.dart';
+
 
 class QuizPage extends StatefulWidget {
   const QuizPage({

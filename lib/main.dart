@@ -42,16 +42,17 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(bottom: Radius.circular(30))),
-        title: Center(child: Text('Ciao (nomeutente)! (posizione°)')),
+        title: Center(
+            child: Text(
+          'Ciao (nomeutente)! (posizione°)',
+          style: TextStyle(color: Colors.black),
+        )),
         backgroundColor: Colors.greenAccent,
       ),
       body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('images/bg.png'),
-                  fit: BoxFit.cover
-              )
-          ),
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/bg.png'), fit: BoxFit.cover)),
         child: PageView(
           onPageChanged: (index) {
             setState(() {

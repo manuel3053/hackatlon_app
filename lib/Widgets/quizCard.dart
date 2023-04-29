@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hackatlon_app/Data/constants.dart';
-import 'package:hackatlon_app/Data/globals.dart';
 import 'package:hackatlon_app/Functions/domande.dart';
 
 class quizCard extends StatefulWidget {
