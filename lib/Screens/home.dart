@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int level=0;
+  int level = 0;
   List<Quiz> game = generateTrivia(4);
 
   List<Widget> gridItems = [
@@ -74,21 +74,6 @@ class _HomeState extends State<Home> {
         ),
       ),
     ),
-    Padding(
-      padding: EdgeInsets.all(20),
-      child: ElevatedButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => const quizCard(quiz: game[level], update: (){})));
-          },
-        style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(40))),
-        child: Text('Trivia'),
-      ),
-    )
   ];
 
   @override
